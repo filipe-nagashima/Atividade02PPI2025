@@ -1,0 +1,25 @@
+{
+  "name": "atividade02ppi2025",
+  "version": "1.0.0",
+  "description": "Projeto para Atividade 2 sobre backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/filipe-nagashima/Atividade02PPI2025.git"
+  },
+  "keywords": [
+    "Backend",
+    "Node",
+    "Javascript",
+    "Mysql"
+  ],
+  "author": "Filipe Souza Nagashima",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/filipe-nagashima/Atividade02PPI2025/issues"
+  },
+  "homepage": "https://github.com/filipe-nagashima/Atividade02PPI2025#readme"
+}
