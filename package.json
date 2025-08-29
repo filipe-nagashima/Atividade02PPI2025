@@ -1,6 +1,7 @@
 {
   "name": "atividade02ppi2025",
   "version": "1.0.0",
+  "type": "module",
   "description": "Projeto para Atividade 2 sobre backend",
   "main": "index.js",
   "scripts": {
