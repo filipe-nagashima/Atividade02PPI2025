@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/filipe-nagashima/Atividade02PPI2025/issues"
   },
-  "homepage": "https://github.com/filipe-nagashima/Atividade02PPI2025#readme"
+  "homepage": "https://github.com/filipe-nagashima/Atividade02PPI2025#readme",
+  "dependencies": {
+    "mysql2": "^3.14.3"
+  }
 }

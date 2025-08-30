@@ -1,6 +1,9 @@
+import CursoDAO from '../DB/cursoDAO.js';
+
 export default class Curso {
     //Atributos da classe Curso
 
+    #cod
     #nome
     #dt_ini
     #duracao
@@ -13,7 +16,8 @@ export default class Curso {
     #num_vagas
 
     //Construtor
-    constructor(nome = "", dt_ini = "", duracao = "", valor = "", descricao = "", carga_horaria = "", instrutor = "", experiencia = "", nivel = "", num_vagas = "") {
+    constructor(cod = 0, nome = "", dt_ini = "", duracao = "", valor = "", descricao = "", carga_horaria = "", instrutor = "", experiencia = "", nivel = "", num_vagas = 0) {
+        this.#cod = cod;
         this.#nome = nome;
         this.#dt_ini = dt_ini;
         this.#duracao = duracao;
@@ -27,6 +31,14 @@ export default class Curso {
     }
 
     // Getters e setters
+
+    get get_cod() {
+        return this.#cod;
+    }
+
+    set set_cod(cod) {
+        this.#cod = cod;
+    }
 
     get get_nome() {
         return this.#nome;
@@ -110,6 +122,7 @@ export default class Curso {
 
     toString(){
         return `
+            Cód: ${this.#cod}\n
             Nome: ${this.#nome}\n
             Data de Início: ${this.#dt_ini}\n
             Duração: ${this.#duracao}\n
@@ -125,6 +138,7 @@ export default class Curso {
 
     toJSON() {
         return {
+            cod: this.#cod,
             nome: this.#nome,
             dt_ini: this.#dt_ini,
             duracao: this.#duracao,
@@ -136,5 +150,25 @@ export default class Curso {
             nivel: this.#nivel,
             num_vagas: this.#num_vagas
         }
-    }   
+    }
+
+    async gravar(){
+        const cursoDAO = new CursoDAO();
+        await cursoDAO.gravar(this);
+    }
+
+    async alterar(){
+        const cursoDAO = new CursoDAO();
+        await cursoDAO.alterar(this);
+    }
+
+    async excluir(){
+        const cursoDAO = new CursoDAO();
+        await cursoDAO.excluir(this);
+    }
+
+    async consultar(){
+        const cursoDAO = new CursoDAO();
+        return await cursoDAO.consultar(this);
+    }
 }
