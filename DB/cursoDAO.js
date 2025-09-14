@@ -6,9 +6,8 @@ export default class cursoDAO{
     async gravar(curso){
         if (curso instanceof Curso){
             const conexao = await conectar()
-            const sql = "INSERT INTO curso(curso_cod, curso_nome, curso_dt_ini, curso_duracao, curso_valor, curso_descricao, curso_carga_hora, curso_instrutor, curso_experiencia, curso_nivel, curso_vagas) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+            const sql = "INSERT INTO curso(curso_nome, curso_dt_ini, curso_duracao, curso_valor, curso_descricao, curso_carga_hora, curso_instrutor, curso_experiencia, curso_nivel, curso_vagas) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
             const parametros = [
-                curso.get_cod,
                 curso.get_nome,
                 curso.get_dt_ini,
                 curso.get_duracao,
@@ -64,6 +63,34 @@ export default class cursoDAO{
         const conexao = await conectar()
         const sql = "SELECT * FROM curso ORDER BY curso_nome"
         const [registros] = await conexao.query(sql)
+        await conexao.release()
+
+        let listaCursos = []
+        for (const registro of registros) {
+
+            const curso = new Curso(registro.curso_cod,
+                                    registro.curso_nome, 
+                                    registro.curso_dt_ini, 
+                                    registro.curso_duracao, 
+                                    registro.curso_valor, 
+                                    registro.curso_descricao, 
+                                    registro.curso_carga_hora, 
+                                    registro.curso_instrutor,
+                                    registro.curso_experiencia,
+                                    registro.curso_nivel, 
+                                    registro.curso_vagas
+                                    )
+            listaCursos.push(curso)
+        }
+
+        return listaCursos
+    }
+
+    async consultarCodigo(cod){
+        cod = cod || 0
+        const conexao = await conectar()
+        const sql = "SELECT * FROM curso WHERE curso_cod = ? ORDER BY curso_nome"
+        const [registros] = await conexao.query(sql, [cod])
         await conexao.release()
 
         let listaCursos = []

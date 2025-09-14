@@ -5,7 +5,8 @@
   "description": "Projeto para Atividade 2 sobre backend",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,7 @@
   },
   "homepage": "https://github.com/filipe-nagashima/Atividade02PPI2025#readme",
   "dependencies": {
+    "express": "^5.1.0",
     "mysql2": "^3.14.3"
   }
 }
