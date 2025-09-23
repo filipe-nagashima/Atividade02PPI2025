@@ -61,7 +61,7 @@ export default class cursoDAO{
 
     async consultar(){
         const conexao = await conectar()
-        const sql = "SELECT * FROM curso ORDER BY curso_nome"
+        const sql = "SELECT * FROM curso"
         const [registros] = await conexao.query(sql)
         await conexao.release()
 
@@ -89,7 +89,7 @@ export default class cursoDAO{
     async consultarCodigo(cod){
         cod = cod || 0
         const conexao = await conectar()
-        const sql = "SELECT * FROM curso WHERE curso_cod = ? ORDER BY curso_nome"
+        const sql = "SELECT * FROM curso WHERE curso_cod = ?"
         const [registros] = await conexao.query(sql, [cod])
         await conexao.release()
 
